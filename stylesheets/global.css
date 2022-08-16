@@ -1,0 +1,328 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
+/* ANIMATIONS */
+@import 'keyframe_animations.css';
+
+/* CSS CUSTOM PROPERTIES */
+:root {
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-dark-gray-blue: hsl(217, 19%, 35%);
+  --clr-light-gray-blue: hsl(210, 46%, 95%);
+  --clr-gray-blue: hsl(212, 23%, 69%);
+  --clr-desaturated-dark-blue: hsl(214, 17%, 51%);
+  
+  --font-fam-manrope:'Manrope', sans-serif;
+  
+  --font-regular: 500;
+  --font-bold: 700;
+  
+  --default-font-size: 0.8125em;
+  --h1-size: 1em;
+  
+  --card-max-width: calc( (375rem * 0.87) / 16 ); /* 87% of 375px in rem units */
+}
+
+/* CSS RESET */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg {
+  display: block;
+}
+
+/* MOBILE FIRST WORKFLOW */
+body {
+  background-color: var(--clr-light-gray-blue);
+  font-family: var(--font-fam-manrope);
+  font-weight: var(--font-regular);
+}
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.card {
+  background-color: var(--clr-white);
+  max-width: var(--card-max-width);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 35px 25px -5px hsla(210, 30%, 50%, 0.1);
+}
+
+.card > img {
+  width: 100%;
+  max-height: 12rem;
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
+.info-section {
+  padding: 2.15rem 2.15rem 0.625rem;
+}
+
+.info-section h1 {
+  color: var(--clr-dark-gray-blue);
+  font-size: var(--h1-size);
+  font-weight: var(--font-bold);
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
+}
+
+.info-section p {
+  color: var(--clr-desaturated-dark-blue);
+  font-size: var(--default-font-size);
+  line-height: 1.6;
+}
+
+.author-info-container {
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.author-info,
+.social-btns {
+  display: flex;
+  align-items: center;
+  padding: 0rem 2.15rem;
+}
+
+.author-dp {
+  width: 2.5em;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.author-and-date {
+  display: flex;
+  flex-flow: column wrap;
+  line-height: 1.5;
+}
+
+.author-name {
+  color: var(--clr-dark-gray-blue);
+  font-size: var(--default-font-size);
+  font-weight: var(--font-bold);
+}
+
+.date-posted {
+  color: var(--clr-desaturated-dark-blue);
+  font-size: var(--default-font-size);
+}
+
+.share-btn {
+  background-color: var(--clr-light-gray-blue);
+  width: 2.2rem;
+  aspect-ratio: 1/1;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 2.15rem;
+  transition: background-color 1000ms ease;
+}
+
+.share-btn:hover {
+  cursor: pointer;
+}
+
+.share-btn:focus-visible {
+  outline: 2px dotted var(--clr-dark-gray-blue);
+}
+
+.share-btn > svg {
+  fill: var(--clr-desaturated-dark-blue);
+  transition: fill 800ms ease;
+}
+
+.social-btns {
+  background-color: var(--clr-dark-gray-blue);
+  flex-flow: row wrap;
+  position: absolute;
+}
+
+@media (max-width: 45em) {
+  .social-btns {
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 400ms ease-in;
+  }
+}
+
+.social-btns::before {
+  content: 'SHARE';
+  font-size: var(--default-font-size);
+  color: var(--clr-gray-blue);
+  letter-spacing: 0.35em;
+}
+
+.social-btns a {
+  margin-left: 1rem;
+  display: block;
+}
+
+.attribution {
+  font-size: 0.75em;
+  color: var(--clr-dark-gray-blue);
+  text-align: center;
+  padding: 1rem;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* UTILITY CLASSES */
+.user-select-none {
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+}
+
+/* LINKED WITH JAVASCRIPT */
+.active .share-btn {
+  background-color: var(--clr-desaturated-dark-blue);
+}
+
+.active .share-btn > svg {
+  fill: var(--clr-white);
+}
+
+@media (max-width: 45em) {
+  .active .social-btns {
+    transform: translateY(0%);
+  }
+}
+
+/* TABLETS SCREENS */
+@media(min-width: 45em) {
+  :root {
+    --card-max-width: 45rem;
+    --h1-size: 1.25em;
+  }
+  
+  .card {
+    display: grid;
+    grid-template-areas:
+      'hero-img info-sec'
+      'hero-img author-info-con';
+    position: relative;
+  }
+  
+  .card > img {
+    grid-area: hero-img;
+    max-height: unset;
+    height: 100%;
+    object-position: 0% 35%;
+  }
+  
+  .info-section {
+    grid-area: info-sec;
+    padding-top: 2rem;
+    padding-bottom: unset;
+  }
+  
+  .info-section,
+  .author-info,
+  .social-btns {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  
+  .info-section > h1 {
+    line-height: 1.4;
+  }
+  
+  .author-info-container {
+    grid-area: author-info-con;
+    min-height: unset;
+    margin: 1rem 0 2rem;
+    position: static;
+  }
+  
+  .social-btns {
+    padding: 1rem;
+    border-radius: 10px;
+    right: 0rem;
+    filter: drop-shadow( 0px 5px 5px hsla(210, 30%, 50%, 0.4) );
+    animation: fade-close 800ms forwards;
+  }
+  
+  .social-btns::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    aspect-ratio: 1/1;
+    background-color: var(--clr-dark-gray-blue);
+    transform: rotate(45deg);
+    right: 3.2rem;
+    bottom: -0.5rem;
+  }
+  
+  .social-btns > a,
+  .social-btns::before {
+    visibility: hidden;
+    transition: visibility 300ms ease-in;
+    z-index: 1;
+  }
+  
+  
+  .share-btn {
+    right: 2.5rem;
+    transition: background-color 200ms ease-in;
+  }
+  
+  .share-btn > svg {
+    transition: fill 200ms ease-in;
+  }
+  
+  /* LINKED WITH JAVASCRIPT */
+  .active .social-btns {
+    animation: fade-open 700ms forwards;
+  }
+  
+  .active .social-btns > a,
+  .active .social-btns::before {
+    visibility: visible;
+  }
+}
+
+/* DESKTOP SCREENS */
+@media (min-width: 60em) {
+  .relative-wrapper {
+    position: relative;
+  }
+  
+  .card {
+    position: static;
+  }
+  
+  .social-btns {
+    padding: 1rem 2rem;
+    right: -3.75rem;
+  }
+  
+  .social-btns::after {
+    right: unset;
+    right: 47%;
+  }
+}
